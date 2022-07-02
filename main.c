@@ -7,8 +7,8 @@
  * Copyright (c) 2022 Tomas Dudacek
 */
 
-/* READ ME:
-   
+/*
+
    Example code is inspired by RPi pico default example code for i2c communication
    with the MPU6050 MEMS accelerometr and gyroscope.
    Registers, addresses and the rest of the code was writen by me.
@@ -67,9 +67,8 @@ int main() {
 
    // read
    while (true) {
-      
-      //lsm303dlh_read_acc(&acc);
-      //printf("Acc. X = %4d Y = %4d, Z = %4d \r",acc.x,acc.y,acc.z);
+      lsm303dlh_read_acc(&acc);
+      printf("Acc. X = %5d Y = %5d, Z = %5d \r",acc.x,acc.y,acc.z);
       //lsm303dlh_read_mag(&mag);
       //printf("Acc. X = %4d Y = %4d, Z = %4d \r",acc.x,acc.y,acc.z);
       sleep_ms(100);
@@ -81,12 +80,11 @@ int main() {
 
 // function --------------------------------------------------------------
 void init_i2c_default() {
-   //i2c_init(i2c_default, I2C_BAUD * 1000);
+   i2c_init(i2c_default, I2C_BAUD * 1000);
    gpio_set_function(PICO_DEFAULT_I2C_SDA_PIN, GPIO_FUNC_I2C);
    gpio_set_function(PICO_DEFAULT_I2C_SCL_PIN, GPIO_FUNC_I2C);
    gpio_pull_up(PICO_DEFAULT_I2C_SDA_PIN);
    gpio_pull_up(PICO_DEFAULT_I2C_SCL_PIN);
 }
-
 
 /* end of main.c */

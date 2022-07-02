@@ -2,6 +2,9 @@
  * File name: lsm303dlh.c
  * Date:      2022/01/07
  * Author:    Tomas Dudacek
+ * 
+ * License:   MIT License
+ * Copyright (c) 2022 Tomas Dudacek
  */
 
 #include <stdint.h>
