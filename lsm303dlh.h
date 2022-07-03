@@ -13,8 +13,8 @@
 #include <stdint.h>
 
 // TODO update after scan - see READ ME / main.c
-#define INTERFACE_A 0x18
-#define INTERFACE_B 0x1E
+#define INTERFACE_A 0x18 // Accelerometr slave address
+#define INTERFACE_B 0x1E // Magnetometr slave address
 // end of TODO
 
 #define CTRL_REG_1 0x20

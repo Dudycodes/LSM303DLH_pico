@@ -18,8 +18,7 @@
    Note: After you've wired your LSM303DLH breakout board run the example 
    i2c bus scan to get the two I2C interface adressess
    (The IC has two interfaces - one for the accelerometr and second for 
-   the magnetometr, but you can address both tools from the same interface)
-   and update the inteface adresses in lsm303dlh.h
+   the magnetometr) and update the inteface adresses in lsm303dlh.h
    Or alternatively you can run my altered version of the scan (TODO)
    to display the result via USB and use a terminal tool such as gtkterm or putty.
 
