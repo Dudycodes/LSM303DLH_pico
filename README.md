@@ -12,8 +12,7 @@ GND (e.g. pin 38)  -> GND <br />
 
 After you've wired your LSM303DLH breakout board run the example 
 I2C bus scan to get the two I2C interface adressess
-(The IC has two interfaces - one for the accelerometr and second for 
-the magnetometr, but you can address both tools from the same interface)
+(The IC has two interfaces - one for the accelerometr and second for the magnetometr)
 and update the inteface adresses in lsm303dlh.h
 
 Or alternatively you can run [my altered version of the scan](https://github.com/Dudycodes/i2c_bus_scan_usb_pico)
