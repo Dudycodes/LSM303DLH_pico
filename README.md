@@ -16,7 +16,7 @@ I2C bus scan to get the two I2C interface adressess
 the magnetometr, but you can address both tools from the same interface)
 and update the inteface adresses in lsm303dlh.h
 
-Or alternatively you can run [my altered version of the scan]()
+Or alternatively you can run [my altered version of the scan](https://github.com/Dudycodes/i2c_bus_scan_usb_pico)
 to display the result via USB and use a terminal tool such as [GTKTerm](https://sourceforge.net/projects/gtkterm/) or [PuTTY](https://www.putty.org/).
 
 ## Building - 
