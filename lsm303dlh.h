@@ -20,7 +20,12 @@
 #define CTRL_REG_1 0x20
 #define CTRL_REG_4 0x23
 #define ACC_REG 0xA8 // data starts on 0x28 - MSb set to 1 (autoincrease on read) -> 0xA8
-#define MAG_REG 0x00 // TODO
+#define MAG_REG 0x03 // data starts on 0x03 - MSb set to 1 (autoincrease on read) -> 0xA8
+#define MAG_CRA 0x00
+#define MAG_CRB 0x01
+#define MAG_MR 0x02
+#define PI 3.141592653
+
 
 typedef struct {
    int16_t x;
@@ -38,7 +43,13 @@ typedef struct { // TODO
  * Wake up and set the device (see IC documentation for more info)
  * (Documentation: https://cz.mouser.com/datasheet/2/389/stmicroelectronics_cd00260288-1206307.pdf)
  */
-void lsm303dlh_setup();
+void lsm303dlh_acc_setup();
+
+/*
+ * Wake up and set the device (see IC documentation for more info)
+ * (Documentation: https://cz.mouser.com/datasheet/2/389/stmicroelectronics_cd00260288-1206307.pdf)
+ */
+void lsm303dlh_mag_setup();
 
 /*
  * Performs a sequention of i2c communication with INTERFACE_A address 
@@ -51,6 +62,12 @@ void lsm303dlh_read_acc(accel_t *acc);
  * and writes in given pointer to mag_t struct
  */
 void lsm303dlh_read_mag(mag_t *mag);
+
+/*
+ * WORK IN PROGRESS - WILL RETURN a heading angle of the IC
+ * currently returns 0
+ */
+int32_t get_angle(mag_t *mag);
 
 #endif
 /* end of lsm303dlh.h */
