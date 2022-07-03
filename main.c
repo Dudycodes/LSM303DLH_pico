@@ -8,11 +8,6 @@
 */
 
 /*
-
-   Example code is inspired by RPi pico default example code for i2c communication
-   with the MPU6050 MEMS accelerometr and gyroscope.
-   Registers, addresses and the rest of the code was writen by me.
-
    Connections on Raspberry Pi Pico board - 
 
    GPIO PICO_DEFAULT_I2C_SDA_PIN (On Pico this is GP4 (e.g. pin 6)) -> SDA 
@@ -40,8 +35,8 @@
 #include "hardware/i2c.h"
 #include "lsm303dlh.h"
 
-
 #define I2C_BAUD 400 // 400 or 100 (kHz)
+#define REFRESH_PERIOD 100 // ms
 
 // functional declaration
 void init_i2c_default();
@@ -60,7 +55,8 @@ int main() {
    stdio_init_all();
 
    // device setup (wakeup)
-   lsm303dlh_setup();
+   lsm303dlh_acc_setup();
+   lsm303dlh_mag_setup();
 
    accel_t acc;
    mag_t mag;
@@ -68,10 +64,11 @@ int main() {
    // read
    while (true) {
       lsm303dlh_read_acc(&acc);
-      printf("Acc. X = %5d Y = %5d, Z = %5d \r",acc.x,acc.y,acc.z);
-      //lsm303dlh_read_mag(&mag);
-      //printf("Acc. X = %4d Y = %4d, Z = %4d \r",acc.x,acc.y,acc.z);
-      sleep_ms(100);
+      lsm303dlh_read_mag(&mag);
+      //int32_t angle = get_angle(&mag); // TODO Work in progress
+      printf("Acc. X = %5d Y = %5d, Z = %5d \t Mag. X = %4d Y = %4d, Z = %4d \r",
+               acc.x,acc.y,acc.z,mag.x,mag.y,mag.z);
+      sleep_ms(REFRESH_PERIOD);
    }
 
    #endif
